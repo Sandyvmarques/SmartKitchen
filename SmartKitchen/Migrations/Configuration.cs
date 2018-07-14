@@ -7,14 +7,14 @@ namespace SmartKitchen.Migrations
     using System.Data.Entity.Migrations;
     using System.Linq;
 
-    internal sealed class Configuration : DbMigrationsConfiguration<SmartKitchen.Models.SmartKitchenDB>
+    internal sealed class Configuration : DbMigrationsConfiguration<SmartKitchen.Models.ApplicationDbContext>
     {
         public Configuration()
         {
             AutomaticMigrationsEnabled = true;
         }
 
-        protected override void Seed(SmartKitchen.Models.SmartKitchenDB context)
+        protected override void Seed(SmartKitchen.Models.ApplicationDbContext context)
         {
 			//*****************************************************************************************************************************
 			// adiciona Clientes
