@@ -62,5 +62,13 @@
 	}
 
 </table>
+@foreach (var model in Model)
+{
+	<p>@Html.DisplayFor(foto => model.NomeProduto)</p>
+	foreach (var imagem in model.ListaDeImagens)
+	{
+		<img src="~/Imagens/@imagem.Img" width="120" height="120" />
+	}
+}
 
 
