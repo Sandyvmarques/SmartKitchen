@@ -194,11 +194,23 @@ namespace SmartKitchen.Controllers
 				}
 			}
 			if (ModelState.IsValid)
-            {
-                db.Entry(produto).State = EntityState.Modified;
-                db.SaveChanges();
-                return RedirectToAction("Index");
-            }
+			{
+				try
+				{
+					db.Entry(produto).State = EntityState.Modified;
+					db.SaveChanges();
+					//if (Uploadimagens != null){
+					//nomeAntigo = produto.ListaDeImagens
+					//novoNome="Produto_" + produto.ProdID +DateTime.Now.ToString("_yyyyMMdd_hhmmss") +Path.GetExtension(UploadImagens.FileName1);
+					//produto.ListaDeImagens = novoNome
+					//Uploadimagens.SaveAs(Path.Combine(Server.MapPath("~/imagens/"), produto.ListaDeImagens));
+					return RedirectToAction("Index");
+				}
+				catch (Exception)
+				{
+					ModelState.AddModelError("", string.Format("An ERROR occured during the edition of the product.", produto.NomeProduto));
+				}
+			}
             ViewBag.CategoriasFK = new SelectList(db.Categorias, "Cat_ID", "NomeCateg", produto.CategoriasFK);
             return View(produto);
         }
