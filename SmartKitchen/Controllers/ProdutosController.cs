@@ -18,8 +18,8 @@ namespace SmartKitchen.Controllers
         // GET: Produtos
         public ActionResult Index()
         {
-           // var produtos = db.Produtos.Include(p => p.Categoria);
-            return View(db.Produtos.ToList());
+            var ListaDeProdutos = db.Produtos.ToList().OrderBy(p => p.Categoria);
+            return View(ListaDeProdutos);
         }
 
         // GET: Produtos/Details/5
@@ -27,14 +27,14 @@ namespace SmartKitchen.Controllers
         {
             if (id == null)
             {
-                return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
-            }
-            Produtos produtos = db.Produtos.Find(id);
-            if (produtos == null)
+				return RedirectToAction("Index");
+			}
+            Produtos produto = db.Produtos.Find(id);
+            if (produto == null)
             {
-                return HttpNotFound();
-            }
-            return View(produtos);
+				return RedirectToAction("Index");
+			}
+            return View(produto);
         }
 
         // GET: Produtos/Create
@@ -99,13 +99,13 @@ namespace SmartKitchen.Controllers
         {
             if (id == null)
             {
-                return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
-            }
+				return RedirectToAction("Index");
+			}
             Produtos produto = db.Produtos.Find(id);
             if (produto == null)
             {
-                return HttpNotFound();
-            }
+				return RedirectToAction("Index");
+			}
             ViewBag.CategoriasFK = new SelectList(db.Categorias, "Cat_ID", "NomeCateg", produto.CategoriasFK);
             return View(produto);
         }
@@ -132,13 +132,13 @@ namespace SmartKitchen.Controllers
         {
             if (id == null)
             {
-                return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
-            }
+				return RedirectToAction("Index");
+			}
             Produtos produtos = db.Produtos.Find(id);
             if (produtos == null)
             {
-                return HttpNotFound();
-            }
+				return RedirectToAction("Index");
+			}
             return View(produtos);
         }
 
