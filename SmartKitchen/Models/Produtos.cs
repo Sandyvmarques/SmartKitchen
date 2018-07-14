@@ -28,6 +28,7 @@ namespace SmartKitchen.Models
 		public decimal PrecoVenda { get; set; }
 		[Required]
 		public int Stock { get; set; }
+		
 
 		//Foreign Keys 
 		[ForeignKey("Categoria")]

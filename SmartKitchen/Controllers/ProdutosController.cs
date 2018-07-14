@@ -18,7 +18,7 @@ namespace SmartKitchen.Controllers
         // GET: Produtos
         public ActionResult Index()
         {
-			var ListaDeProdutos = db.Produtos.OrderBy(p => p.Categoria).ToList();
+			var ListaDeProdutos = db.Produtos.OrderBy(p => p.Categoria.NomeCateg).ToList();
 			return View(ListaDeProdutos);
 			
         }
@@ -50,7 +50,8 @@ namespace SmartKitchen.Controllers
         // more details see https://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public ActionResult Create([Bind(Include = "Prod_ID,NomeProduto,Descricao,IVAVenda,PrecoVenda,Stock,CategoriasFK")] Produtos produto, HttpPostedFileBase[] Uploadimagens)//para ter multiplas imagens faco um array e um ciclo for para ir buscar cada imagem. uma coisa q o vs faz por ti ex: produto.imgem.caminho
+        public ActionResult Create([Bind(Include = "Prod_ID,NomeProduto,Descricao,IVAVenda,PrecoVenda,Stock,CategoriasFK")]
+		Produtos produto, HttpPostedFileBase[] Uploadimagens)//para ter multiplas imagens faco um array e um ciclo for para ir buscar cada imagem. uma coisa q o vs faz por ti ex: produto.imgem.caminho
         {
 			foreach (HttpPostedFileBase Uploadimagem in Uploadimagens)
 			{
@@ -82,8 +83,18 @@ namespace SmartKitchen.Controllers
 				//validar se a img foi fornecida
 				if (Uploadimagens != null)
 				{
+
+				
 					path = Path.Combine(Server.MapPath("~/imagens/"), nomeImg);
-					//produto.ListaDeImagens = nomeImg;
+					//produto.ListaDeImagens= nomeImg;
+					Imagens imagem = new Imagens
+					{
+						Img = nomeImg,
+						Ordem = ""
+					};
+
+
+
 				}
 				else
 				{
