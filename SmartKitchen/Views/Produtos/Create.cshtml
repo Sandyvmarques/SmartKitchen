@@ -1,18 +1,27 @@
 ﻿@model SmartKitchen.Models.Produtos
 
 @{
-    ViewBag.Title = "Create";
+    ViewBag.Title = "Add New Products";
 }
 
 <h2>Create</h2>
 
 
-@using (Html.BeginForm()) 
+@using (Html.BeginForm("Create",
+						"Produtos",
+						FormMethod.Post,
+						new { enctype="multipart/form-data"}
+
+
+
+
+
+	))
 {
     @Html.AntiForgeryToken()
     
 <div class="form-horizontal">
-	<h4>Produtos</h4>
+	<h4>Products</h4>
 	<hr />
 	@Html.ValidationSummary(true, "", new { @class = "text-danger" })
 	<div class="form-group">
@@ -65,7 +74,8 @@
 
 
 	@**os dados que vao ser postos aqui vao ser mostrados no array dde imagens ... este multiple e para varias imagens*@
-	<input type="file" name="UploadImagens" multiple />
+	<input type="file" name="UploadImages" multiple
+		   style="color:blue;" accept=".jpg"/>
 	<input type="submit" value="Upload" />
 
 	<div class="form-group">

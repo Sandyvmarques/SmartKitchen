@@ -7,7 +7,7 @@
 <h2>Index</h2>
 
 <p>
-    @Html.ActionLink("Create New", "Create")
+    @Html.ActionLink("Create New Product", "Create")
 </p>
 <table class="table">
     <tr>
@@ -52,6 +52,12 @@
         <td>
             @Html.DisplayFor(modelItem => item.Stock)
         </td>
+		@*<td>*@
+			@*@Html.DisplayFor(modelItem => item.Fotografia)*@
+			 @*<a href="~/imagens/@item." target="_blank">
+			 <img src="~/imagens/@item.Fotografia" width="50" height="37" />
+			</a>*@
+		@*</td>*@
         <td>
             @Html.ActionLink("Edit", "Edit", new { id=item.Prod_ID }) |
             @Html.ActionLink("Details", "Details", new { id=item.Prod_ID }) |
