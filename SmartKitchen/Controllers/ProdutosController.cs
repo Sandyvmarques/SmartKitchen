@@ -60,7 +60,15 @@ namespace SmartKitchen.Controllers
 				string filename = "Images/" + name;
 
 				//ID do novo produto 
-				int idNovoPoduto = db.Produtos.Max(a => a.Prod_ID) + 1;
+				int idNovoPoduto = 0;
+				try
+				{
+					 idNovoPoduto = db.Produtos.Max(a => a.Prod_ID) + 1;
+				}
+				catch (Exception)
+				{
+					idNovoPoduto = 1;
+				}
 				//guarda o ID
 				produto.Prod_ID = idNovoPoduto;
 
@@ -85,10 +93,16 @@ namespace SmartKitchen.Controllers
 			}
 			if (ModelState.IsValid)
 			{
-				db.Produtos.Add(produto);
-				db.SaveChanges();
-				return RedirectToAction("Index");
-			}
+				try
+				{
+					db.Produtos.Add(produto);
+					db.SaveChanges();
+					return RedirectToAction("Index");
+				}
+				catch (Exception) {
+					ModelState.AddModelError("", "Error Creating a new Product");
+				}
+				}
 
 			//ViewBag.CategoriasFK = new SelectList(db.Categorias, "Cat_ID", "NomeCateg", produto.CategoriasFK);
 			return View(produto);
