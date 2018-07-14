@@ -246,7 +246,7 @@
     <Compile Include="Models\Clientes.cs" />
     <Compile Include="Models\Encomendas.cs" />
     <Compile Include="Models\EncProd.cs" />
-    <Compile Include="Models\IdentityModels.cs" />
+    <Compile Include="Models\SmartKitchenDB.cs" />
     <Compile Include="Models\Imagens.cs" />
     <Compile Include="Models\Produtos.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />

@@ -8,65 +8,68 @@
 
 <h3>Are you sure you want to delete this?</h3>
 <div>
-    <h4>Produtos</h4>
-    <hr />
-    <dl class="dl-horizontal">
-        <dt>
-            @Html.DisplayNameFor(model => model.Categoria.NomeCateg)
-        </dt>
+	<h4>Produtos</h4>
+	<hr />
 
-        <dd>
-            @Html.DisplayFor(model => model.Categoria.NomeCateg)
-        </dd>
+	 @Html.ValidationSummary(true, "", new { @class = "text-danger" })
+	<dl class="dl-horizontal">
+		<dt>
+			@Html.DisplayNameFor(model => model.Categoria.NomeCateg)
+		</dt>
 
-        <dt>
-            @Html.DisplayNameFor(model => model.NomeProduto)
-        </dt>
+		<dd>
+			@Html.DisplayFor(model => model.Categoria.NomeCateg)
+		</dd>
 
-        <dd>
-            @Html.DisplayFor(model => model.NomeProduto)
-        </dd>
+		<dt>
+			@Html.DisplayNameFor(model => model.NomeProduto)
+		</dt>
 
-        <dt>
-            @Html.DisplayNameFor(model => model.Descricao)
-        </dt>
+		<dd>
+			@Html.DisplayFor(model => model.NomeProduto)
+		</dd>
 
-        <dd>
-            @Html.DisplayFor(model => model.Descricao)
-        </dd>
+		<dt>
+			@Html.DisplayNameFor(model => model.Descricao)
+		</dt>
 
-        <dt>
-            @Html.DisplayNameFor(model => model.IVAVenda)
-        </dt>
+		<dd>
+			@Html.DisplayFor(model => model.Descricao)
+		</dd>
 
-        <dd>
-            @Html.DisplayFor(model => model.IVAVenda)
-        </dd>
+		<dt>
+			@Html.DisplayNameFor(model => model.IVAVenda)
+		</dt>
 
-        <dt>
-            @Html.DisplayNameFor(model => model.PrecoVenda)
-        </dt>
+		<dd>
+			@Html.DisplayFor(model => model.IVAVenda)
+		</dd>
 
-        <dd>
-            @Html.DisplayFor(model => model.PrecoVenda)
-        </dd>
+		<dt>
+			@Html.DisplayNameFor(model => model.PrecoVenda)
+		</dt>
 
-        <dt>
-            @Html.DisplayNameFor(model => model.Stock)
-        </dt>
+		<dd>
+			@Html.DisplayFor(model => model.PrecoVenda)
+		</dd>
 
-        <dd>
-            @Html.DisplayFor(model => model.Stock)
-        </dd>
+		<dt>
+			@Html.DisplayNameFor(model => model.Stock)
+		</dt>
 
-    </dl>
+		<dd>
+			@Html.DisplayFor(model => model.Stock)
+		</dd>
 
-    @using (Html.BeginForm()) {
-        @Html.AntiForgeryToken()
+	</dl>
 
-        <div class="form-actions no-color">
-            <input type="submit" value="Delete" class="btn btn-default" /> |
-            @Html.ActionLink("Back to List", "Index")
-        </div>
-    }
+	@using (Html.BeginForm())
+	{
+		@Html.AntiForgeryToken()
+
+		<div class="form-actions no-color">
+			<input type="submit" value="Delete" class="btn btn-default" /> |
+			@Html.ActionLink("Back to List", "Index")
+		</div>
+	}
 </div>

@@ -18,8 +18,9 @@ namespace SmartKitchen.Controllers
         // GET: Produtos
         public ActionResult Index()
         {
-            var ListaDeProdutos = db.Produtos.ToList().OrderBy(p => p.Categoria);
-            return View(ListaDeProdutos);
+			var ListaDeProdutos = db.Produtos.OrderBy(p => p.Categoria).ToList();
+			return View(ListaDeProdutos);
+			
         }
 
         // GET: Produtos/Details/5
@@ -82,7 +83,7 @@ namespace SmartKitchen.Controllers
 				if (Uploadimagens != null)
 				{
 					path = Path.Combine(Server.MapPath("~/imagens/"), nomeImg);
-					produto.ListaDeImagens = nomeImg;
+					//produto.ListaDeImagens = nomeImg;
 				}
 				else
 				{

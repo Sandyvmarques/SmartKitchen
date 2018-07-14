@@ -1,4 +1,5 @@
 ﻿using System.Data.Entity;
+using System.Data.Entity.ModelConfiguration.Conventions;
 using System.Security.Claims;
 using System.Threading.Tasks;
 using Microsoft.AspNet.Identity;
@@ -37,6 +38,13 @@ namespace SmartKitchen.Models
 		public virtual DbSet<Encomendas> Encomendas { get; set; }//tabela dos Encomendas
 		public virtual DbSet<Imagens> Imagens { get; set; }//tabela dos Imagens
 		public virtual DbSet<EncProd> EncProd { get; set; }//tabela dos Encomendas-Produtos
+
+		protected override void OnModelCreating(DbModelBuilder modelBuilder)
+		{
+			modelBuilder.Conventions.Remove<OneToManyCascadeDeleteConvention>();
+			modelBuilder.Conventions.Remove<ManyToManyCascadeDeleteConvention>();
+			base.OnModelCreating(modelBuilder);
+		 }
 
 	}
 }
