@@ -78,7 +78,7 @@ namespace SmartKitchen.Controllers
 				}
 				else
 				{
-					ModelState.AddModelError("", "No Image");
+					ModelState.AddModelError("", "No Image was found. Please insert a image");
 
 					return View(produto);
 				}
@@ -101,13 +101,13 @@ namespace SmartKitchen.Controllers
             {
                 return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
             }
-            Produtos produtos = db.Produtos.Find(id);
-            if (produtos == null)
+            Produtos produto = db.Produtos.Find(id);
+            if (produto == null)
             {
                 return HttpNotFound();
             }
-            ViewBag.CategoriasFK = new SelectList(db.Categorias, "Cat_ID", "NomeCateg", produtos.CategoriasFK);
-            return View(produtos);
+            ViewBag.CategoriasFK = new SelectList(db.Categorias, "Cat_ID", "NomeCateg", produto.CategoriasFK);
+            return View(produto);
         }
 
         // POST: Produtos/Edit/5
