@@ -13,6 +13,14 @@ namespace SmartKitchen
         public void Configuration(IAppBuilder app)
         {
             ConfigureAuth(app);
+
+			iniciaApp();
         }
+
+		private void iniciaApp()
+		{
+			ApplicationDbContext db = new ApplicationDbContext();
+
+		}
     }
 }
