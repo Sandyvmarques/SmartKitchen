@@ -18,7 +18,7 @@ namespace SmartKitchen.Controllers
         // GET: Produtos
         public ActionResult Index()
         {
-			var ListaDeProdutos = db.Produtos.OrderBy(p => p.Categoria).ToList();
+			var ListaDeProdutos = db.Produtos.OrderBy(p => p.Categoria.NomeCateg).ToList();
 			return View(ListaDeProdutos);
 			
         }
