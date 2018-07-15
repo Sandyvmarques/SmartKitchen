@@ -23,6 +23,7 @@ namespace SmartKitchen
 		private void iniciaApp()
 		{
 			ApplicationDbContext db = new ApplicationDbContext();
+
 			var roleManager = new RoleManager<IdentityRole>(new RoleStore<IdentityRole>(db));
 			var userManager = new UserManager<ApplicationUser>(new UserStore<ApplicationUser>(db));
 
@@ -51,7 +52,7 @@ namespace SmartKitchen
 			    }
 			       // criar um utilizador 'Admin' 
 			var user = new ApplicationUser();
-			user.UserName = "susMart";
+			user.UserName = "susMart@mail.com";
 			user.Email = "susMart@mail.com";
 			string userPWD = "1AssdABHN2.";
 			var chkUser = userManager.Create(user, userPWD);

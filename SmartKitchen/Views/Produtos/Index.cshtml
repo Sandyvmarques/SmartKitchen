@@ -5,10 +5,18 @@
 }
 
 <h2>Index</h2>
+@if (User.IsInRole("Admin"))
+{
 
 <p>
 	@Html.ActionLink("Create New Product", "Create")
 </p>
+
+}
+
+
+
+
 <table class="table">
 	<tr>
 		<th>
@@ -67,9 +75,13 @@
 				@Html.DisplayFor(modelItem => item.Stock)
 			</td>
 			<td>
-				@Html.ActionLink("Edit", "Edit", new { id = item.Prod_ID }) |
-				@Html.ActionLink("Details", "Details", new { id = item.Prod_ID }) |
+				@if(User.IsInRole("Admin"))
+				{
+
+				@Html.ActionLink("Edit", "Edit", new { id = item.Prod_ID })
+				<span>|</span>
 				@Html.ActionLink("Delete", "Delete", new { id = item.Prod_ID })
+				}
 			</td>
 		</tr>
 	}
