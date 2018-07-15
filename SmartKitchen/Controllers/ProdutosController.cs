@@ -52,13 +52,13 @@ namespace SmartKitchen.Controllers
         [ValidateAntiForgeryToken]
         public ActionResult Create([Bind(Include = "Prod_ID,NomeProduto,Descricao,IVAVenda,PrecoVenda,Stock,CategoriasFK")]Produtos produto, HttpPostedFileBase[] Uploadimagens)//para ter multiplas imagens faco um array e um ciclo for para ir buscar cada imagem. uma coisa q o vs faz por ti ex: produto.imgem.caminho
         {
-			foreach (HttpPostedFileBase Uploadimagem in Uploadimagens)
+			foreach (var Uploadimagem in Uploadimagens)
 			{
 
 				string name = System.IO.Path.GetFileName(Uploadimagem.FileName);
-				Uploadimagem.SaveAs(Server.MapPath("~/Images/" + name));
+				Uploadimagem.SaveAs(Server.MapPath("~/Imagens/" + name));
 
-				string filename = "Images/" + name;
+				string filename = "Imagens/" + name;
 
 				//ID do novo produto 
 				int idNovoPoduto = 0;
@@ -92,7 +92,15 @@ namespace SmartKitchen.Controllers
 						Ordem = ""
 					};
 
-
+					try
+					{
+						Uploadimagem.SaveAs(path);
+						produto.ListaDeImagens.Add(imagem);
+					}
+					catch (Exception)
+					{
+						ModelState.AddModelError("", "Error Creating a new Product");
+					}
 
 				}
 				else
@@ -236,6 +244,14 @@ namespace SmartKitchen.Controllers
         public ActionResult DeleteConfirmed(int id)
         {
             Produtos produtos = db.Produtos.Find(id);
+			int tam = produtos.ListaDeImagens.Count;
+			var imagens = produtos.ListaDeImagens.ToArray();
+			for (int i=0; i< imagens.Length; i++)
+			{
+
+				produtos.ListaDeImagens.Remove(db.Imagens.Remove(imagens[i]));
+
+			}
             db.Produtos.Remove(produtos);
             db.SaveChanges();
             return RedirectToAction("Index");
