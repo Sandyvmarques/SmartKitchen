@@ -52,6 +52,8 @@ namespace SmartKitchen.Controllers
         [ValidateAntiForgeryToken]
         public ActionResult Create([Bind(Include = "Prod_ID,NomeProduto,Descricao,IVAVenda,PrecoVenda,Stock,CategoriasFK")]Produtos produto, HttpPostedFileBase[] Uploadimagens)//para ter multiplas imagens faco um array e um ciclo for para ir buscar cada imagem. uma coisa q o vs faz por ti ex: produto.imgem.caminho
         {
+
+			int idImagem = db.Imagens.Max(a => a.Imagem_ID);
 			foreach (var Uploadimagem in Uploadimagens)
 			{
 
@@ -65,6 +67,7 @@ namespace SmartKitchen.Controllers
 				try
 				{
 					 idNovoPoduto = db.Produtos.Max(a => a.Prod_ID) + 1;
+					idImagem++;
 				}
 				catch (Exception)
 				{
@@ -74,7 +77,7 @@ namespace SmartKitchen.Controllers
 				produto.Prod_ID = idNovoPoduto;
 
 				//escolher o nome do ficheiro 
-				string nomeImg = "Produto_" + idNovoPoduto + ".jpg";
+				string nomeImg = "Imagem_" + idImagem + ".jpg";
 
 				//var auxiliar
 				string path = "";
@@ -150,57 +153,6 @@ namespace SmartKitchen.Controllers
         [ValidateAntiForgeryToken]
         public ActionResult Edit([Bind(Include = "Prod_ID,NomeProduto,Descricao,IVAVenda,PrecoVenda,Stock,CategoriasFK")] Produtos produto, HttpPostedFileBase[] Uploadimagens)
         {
-
-			foreach (HttpPostedFileBase Uploadimagem in Uploadimagens)
-			{
-
-				string name = System.IO.Path.GetFileName(Uploadimagem.FileName);
-				Uploadimagem.SaveAs(Server.MapPath("~/Images/" + name));
-
-				string filename = "Images/" + name;
-
-				//ID do novo produto 
-				int idNovoPoduto = 0;
-				try
-				{
-					idNovoPoduto = db.Produtos.Max(a => a.Prod_ID) + 1;
-				}
-				catch (Exception)
-				{
-					idNovoPoduto = 1;
-				}
-				//guarda o ID
-				produto.Prod_ID = idNovoPoduto;
-
-				//escolher o nome do ficheiro 
-				string nomeImg = "Produto_" + idNovoPoduto + ".jpg";
-
-				//var auxiliar
-				string path = "";
-
-				//validar se a img foi fornecida
-				if (Uploadimagens != null)
-				{
-
-
-					path = Path.Combine(Server.MapPath("~/imagens/"), nomeImg);
-					//produto.ListaDeImagens= nomeImg;
-					Imagens imagem = new Imagens
-					{
-						Img = nomeImg,
-						Ordem = ""
-					};
-
-
-
-				}
-				else
-				{
-					ModelState.AddModelError("", "No Image was found. Please insert a image");
-
-					return View(produto);
-				}
-			}
 			if (ModelState.IsValid)
 			{
 				try

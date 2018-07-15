@@ -13,8 +13,10 @@ namespace SmartKitchen.Models
 		public int Imagem_ID { get; set; } //chave primária
 
 		//atributos
-		[Required(ErrorMessage = "The {0} is required.")]
+		//[Required(ErrorMessage = "The {0} is required.")]
 		public string Img { get; set; }
+
+
 		public string Ordem { get; set; }
 
 		//Foreign Keys 

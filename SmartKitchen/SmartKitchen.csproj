@@ -251,6 +251,7 @@
     <Compile Include="Models\Encomendas.cs" />
     <Compile Include="Models\EncProd.cs" />
     <Compile Include="Models\IdentityModels.cs" />
+    <Compile Include="Models\ImagensController.cs" />
     <Compile Include="Models\ManageViewModels.cs" />
     <Compile Include="Models\Imagens.cs" />
     <Compile Include="Models\Produtos.cs" />
@@ -432,6 +433,11 @@
     <Content Include="Views\Account\ExternalLoginConfirmation.cshtml" />
     <Content Include="Views\Account\DisplayEmail.cshtml" />
     <Content Include="Views\Account\ConfirmEmail.cshtml" />
+    <Content Include="Views\Imagens\Create.cshtml" />
+    <Content Include="Views\Imagens\Delete.cshtml" />
+    <Content Include="Views\Imagens\Details.cshtml" />
+    <Content Include="Views\Imagens\Edit.cshtml" />
+    <Content Include="Views\Imagens\Index.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />

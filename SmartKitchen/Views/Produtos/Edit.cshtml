@@ -64,13 +64,26 @@
 	<div class="form-group">
 		@Html.LabelFor(model => model.CategoriasFK, "CategoriasFK", htmlAttributes: new { @class = "control-label col-md-2" })
 		<div class="col-md-10">
+			
 			@Html.DropDownList("CategoriasFK", null, htmlAttributes: new { @class = "form-control" })
 			@Html.ValidationMessageFor(model => model.CategoriasFK, "", new { @class = "text-danger" })
 		</div>
 	</div>
-	@**os dados que vao ser postos aqui vao ser mostrados no array dde imagens ... este multiple e para varias imagens*@
-	<input type="file" name="UploadImages" style="color:blue;" accept=".jpg" multiple />
-	<input type="submit" value="Upload" />
+	<div class="container testimonial-group" style="overflow-x:scroll;overflow-y:hidden; height: 340px; white-space:nowrap">
+		@foreach (var item in Model.ListaDeImagens)
+		{
+			<div style="height:320px; width:500px; margin-right:5px; display: inline-block; float: none;">
+				<div style="height:320px; width:500px;">
+					<img src="/Imagens/@item.Img" style="height:300px; width:500px; object-fit:cover;" />
+					<p>
+						@Html.ActionLink("Delete", "Delete", "Imagens", new { id = item.Imagem_ID }, null)
+					</p>
+				</div>
+			</div>
+		}
+	</div>
+	@Html.ActionLink("Add Imagem", "Create", "Imagens", new { ProdutosFK = Model.Prod_ID}, null)
+
 
 	<div class="form-group">
 		<div class="col-md-offset-2 col-md-10">
