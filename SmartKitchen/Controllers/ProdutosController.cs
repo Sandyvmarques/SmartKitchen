@@ -13,7 +13,7 @@ namespace SmartKitchen.Controllers
 {
     public class ProdutosController : Controller
     {
-        private SmartKitchenDB db = new SmartKitchenDB();//variável que representa a BD
+        private ApplicationDbContext db = new ApplicationDbContext();//variável que representa a BD
 
         // GET: Produtos
         public ActionResult Index()
