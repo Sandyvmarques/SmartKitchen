@@ -18,8 +18,12 @@
 			@Html.DisplayNameFor(model => model.NomeProduto)
 		</th>
 		<th>
+			@Html.DisplayNameFor(model => model.ListaDeImagens)
+		</th>
+				<th>
 			@Html.DisplayNameFor(model => model.Descricao)
 		</th>
+
 		<th>
 			@Html.DisplayNameFor(model => model.IVAVenda)
 		</th>
@@ -42,6 +46,15 @@
 				@Html.DisplayFor(modelItem => item.NomeProduto)
 			</td>
 			<td>
+				
+				@foreach (var imagem in item.ListaDeImagens)
+				{
+					<img src="~/Imagens/@imagem.Img" width="150" height="150" />
+				}
+
+			</td>
+			
+			<td>
 				@Html.DisplayFor(modelItem => item.Descricao)
 			</td>
 			<td>
@@ -62,13 +75,5 @@
 	}
 
 </table>
-@foreach (var model in Model)
-{
-	<p>@Html.DisplayFor(foto => model.NomeProduto)</p>
-	foreach (var imagem in model.ListaDeImagens)
-	{
-		<img src="~/Imagens/@imagem.Img" width="150" height="150" />
-	}
-}
 
 
