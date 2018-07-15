@@ -19,12 +19,12 @@ namespace SmartKitchen.Migrations
 			//*****************************************************************************************************************************
 			// adiciona Clientes
 			var Cliente = new List<Clientes> {
-				new Clientes {Cliente_ID=1, NomeCliente="Susana Marta", Contacto=912637284, CodigoPostal="3003-313",Morada="Rua da Liberdade", Email="susMart@mail.com",Username="susMart",Password="1AssdABHN2"},
-				new Clientes {Cliente_ID=2, NomeCliente="Maria Marques", Contacto=917263284,  CodigoPostal="1542-170",Morada="Rua do Centro Republicano", Email="mariaMarq@mail.com",Username="mariaMarq",Password="AD2483mdfn9"},
-				new Clientes {Cliente_ID=3, NomeCliente="Pedro Silva", Contacto=96284327, CodigoPostal="4785-150",  Morada="Rua de Marte", Email="pedroSilv@mail.com",Username="pedroSilv",Password="12MDndj9384"},
-				new Clientes {Cliente_ID=4, NomeCliente="António Rocha", Contacto=927281634, CodigoPostal="3654-215",  Morada="Rua Roberto Duarte Silva", Email="AntR@mail.com",Username="AntR",Password="834h84Ak"},
-				new Clientes {Cliente_ID=5, NomeCliente="Rute Roque", Contacto=916342728, CodigoPostal="1240-102",  Morada="Avenida 25 de Abril", Email="Rutxi@mail.com",Username="Rutxi",Password="238njf3DJ"},
-				new Clientes {Cliente_ID=6, NomeCliente="Zé Manel", Contacto=911272634, CodigoPostal="2040-112", Morada="Rua Garrett", Email="Zeca@mail.com",Username="Zeca",Password="24984NJDFJn"}
+				new Clientes {Cliente_ID=1, NomeCliente="Susana Marta", Contacto=912637284, CodigoPostal="3003-313",Morada="Rua da Liberdade", Email="susMart@mail.com",Username="susMart",Password="1AssdABHN2."},
+				new Clientes {Cliente_ID=2, NomeCliente="Maria Marques", Contacto=917263284,  CodigoPostal="1542-170",Morada="Rua do Centro Republicano", Email="mariaMarq@mail.com",Username="mariaMarq",Password="AD2483mdfn9."},
+				new Clientes {Cliente_ID=3, NomeCliente="Pedro Silva", Contacto=96284327, CodigoPostal="4785-150",  Morada="Rua de Marte", Email="pedroSilv@mail.com",Username="pedroSilv",Password="12MDndj9384."},
+				new Clientes {Cliente_ID=4, NomeCliente="António Rocha", Contacto=927281634, CodigoPostal="3654-215",  Morada="Rua Roberto Duarte Silva", Email="AntR@mail.com",Username="AntR",Password="834h84Ak."},
+				new Clientes {Cliente_ID=5, NomeCliente="Rute Roque", Contacto=916342728, CodigoPostal="1240-102",  Morada="Avenida 25 de Abril", Email="Rutxi@mail.com",Username="Rutxi",Password="238njf3DJ."},
+				new Clientes {Cliente_ID=6, NomeCliente="Zé Manel", Contacto=911272634, CodigoPostal="2040-112", Morada="Rua Garrett", Email="Zeca@mail.com",Username="Zeca",Password="24984NJDFJn."}
 			};
 			Cliente.ForEach(cc => context.Clientes.AddOrUpdate(c => c.NomeCliente, cc));
 			context.SaveChanges();

@@ -53,8 +53,9 @@ namespace SmartKitchen
 			var user = new ApplicationUser();
 			user.UserName = "susMart";
 			user.Email = "susMart@mail.com";
-			string userPWD = "1AssdABHN2";
+			string userPWD = "1AssdABHN2.";
 			var chkUser = userManager.Create(user, userPWD);
+
 			 //Adicionar o Utilizador à respetiva Role-Agente- 
 			  if (chkUser.Succeeded)
 			{
